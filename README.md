@@ -13,8 +13,6 @@ This repository contains code and instructions for performing instance segmentat
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
-
 ## Overview
 
 Instance segmentation is a task in computer vision that involves detecting objects in an image and segmenting them into individual instances. This project utilizes the YOLOv8 architecture to perform instance segmentation on a custom dataset.
