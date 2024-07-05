@@ -14,7 +14,7 @@ This repository contains an instance segmentation project using the YOLOv8m-seg 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-username/instance-segmentation-yolov8.git
+    git clone https://github.com/Aditya-0114/instance-segmentation-yolov8.git
     cd instance-segmentation-yolov8
     ```
 
