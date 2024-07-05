@@ -10,9 +10,6 @@ This repository contains an instance segmentation project using the YOLOv8m-seg 
 - [Prediction](#prediction)
 - [Exporting Model](#exporting-model)
 - [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Installation
 
 1. Clone the repository:
