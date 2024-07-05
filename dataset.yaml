@@ -1,0 +1,6 @@
+train: F:\Instance_Segmentation\simple_images\train
+val: F:\Instance_Segmentation\simple_images\test
+
+nc: 1
+
+names: ['butterfly']
