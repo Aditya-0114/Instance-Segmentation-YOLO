@@ -1,79 +1,74 @@
 # Instance Segmentation with YOLOv8
 
-This repository contains code and instructions for performing instance segmentation on a dataset fetched from [PixelLib](https://github.com/ayoolaolafenwa/PixelLib). The model is trained using YOLOv8's `yolov8m-seg` model. The repository also includes code for making predictions and exporting the trained model to ONNX format.
+This repository contains an instance segmentation project using the YOLOv8m-seg model. The dataset for this project is fetched from [PixelLib](https://github.com/ayoolaolafenwa/PixelLib), and the model is trained and evaluated using the YOLOv8 framework. The trained model is also exported to ONNX format for deployment purposes.
 
 ## Table of Contents
 
-- [Overview](#overview)
+- [Installation](#installation)
 - [Dataset](#dataset)
 - [Training](#training)
 - [Prediction](#prediction)
 - [Exporting Model](#exporting-model)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Results](#results)
 - [Contributing](#contributing)
-## Overview
+- [License](#license)
 
-Instance segmentation is a task in computer vision that involves detecting objects in an image and segmenting them into individual instances. This project utilizes the YOLOv8 architecture to perform instance segmentation on a custom dataset.
+## Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/your-username/instance-segmentation-yolov8.git
+    cd instance-segmentation-yolov8
+    ```
+
+2. Install the required dependencies:
+    ```sh
+    pip install -r requirements.txt
+    ```
 
 ## Dataset
 
-The dataset used for this project is fetched from the [PixelLib repository](https://github.com/ayoolaolafenwa/PixelLib). Follow the instructions in the PixelLib repository to download and prepare the dataset.
+The dataset is fetched from the [PixelLib](https://github.com/ayoolaolafenwa/PixelLib) repository. Follow these steps to download and prepare the dataset:
+
+1. Download the dataset from the [PixelLib](https://github.com/ayoolaolafenwa/PixelLib) repository.
+2. Place the dataset in the `data/` directory.
+3. Ensure the dataset structure matches the format expected by YOLOv8.
 
 ## Training
 
-To train the instance segmentation model, the following command is used:
+To train the YOLOv8 model for instance segmentation, use the following command:
 
-```bash
+```sh
 yolo task=segment mode=train epochs=100 data=dataset.yaml model=yolov8m-seg.pt imgsz=640 batch=8
-This command trains the yolov8m-seg model for 100 epochs with an image size of 640 and a batch size of 8. The configuration for the dataset should be specified in the dataset.yaml file.
+```
+
+--task=segment: Specifies the task type as segmentation.
+--mode=train: Specifies the mode as training.
+--epochs=100: Number of training epochs.
+--data=dataset.yaml: Path to the dataset configuration file.
+--model=yolov8m-seg.pt: Pre-trained YOLOv8m-seg model.
+--imgsz=640: Image size.
+--batch=8: Batch size.
 
 ## Prediction
-Predictions are made using the predict.py script. This script takes an input image and outputs the segmented instances.
+To make predictions using the trained model, run the predict.py script:
+
+```sh
+python predict.py --weights best.pt --source data/images
+```
+
+--weights best.pt: Path to the trained model weights.
+--source data/images: Path to the directory containing images for prediction.
 
 ## Exporting Model
-After training, the model can be exported to the ONNX format using the following command:
+To export the trained model to ONNX format, use the following command:
 
-```bash
-yolo export model=yolov8m-seg.pt format=onnx
+```sh
+yolo export model=best.pt format=onnx
+```
 
-## Requirements
-Python 3.7 or higher
-YOLOv8
-PyTorch
-ONNX
+--model=best.pt: Path to the trained model weights.
+--format=onnx: Specifies the export format as ONNX.
 
-## Installation
-Clone the repository:
-
-```bash
-git clone https://github.com/your-username/instance-segmentation-yolov8.git
-cd instance-segmentation-yolov8
-
- ## Install the required packages:
-
-```bash
-pip install -r requirements.txt
-
-## Usage
-Prepare the dataset as per the instructions in the PixelLib repository.
-
-Train the model using the training command:
-
-```bash
-yolo task=segment mode=train epochs=100 data=dataset.yaml model=yolov8m-seg.pt imgsz=640 batch=8
-
-
-## Make predictions using the predict.py script:
-
-```bash
-python predict.py --input path/to/image.jpg --output path/to/output.jpg
-
-## Export the trained model to ONNX format:
-
-```bash
-yolo export model=yolov8m-seg.pt format=onnx
-
-## Contributing
-Contributions are welcome! Please fork this repository and submit a pull request for any enhancements or bug fixes.
+## Results
+The results of the training and evaluation will be saved in the runs/ directory. You can visualize the results using tools like TensorBoard.
